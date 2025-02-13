@@ -1,0 +1,85 @@
+---
+title: "Module 4"
+author: "Sunny Kim"
+date: "2025-02-03"
+output: html_document
+---
+
+## Challenge 1
+```{r}
+sentence <- "Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed."
+#Remove punctuation 
+clean_sentence <- gsub("[[:punct:]]","",sentence)
+#Split string into substrings
+words <- strsplit(sentence, " ")[[1]]
+#Extract every third element 
+third_word <- words[seq(from = 3, to = 22, by = 3)]
+#Result
+third_word
+```
+## Challenge 2
+```{r}
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+#2nd, 3rd and 6th columns
+x <- m[,c(2,3,6)]
+#6th~8th row
+x <- m[6:8,]
+#row 2:row 6, column 2:9
+x <- m[2:6, 2:9]
+```
+## Challenge 3
+```{r}
+a <- array(data = 400:1, dim = c(5, 5, 4, 4))
+
+a[1,1,1,2]
+[1]300
+
+a[2,3,2]
+incorrect dimensions
+
+a[1:5, 1:5, 3, 3]
+   [,1] [,2] [,3] [,4] [,5]
+[1,]  150  145  140  135  130
+[2,]  149  144  139  134  129
+[3,]  148  143  138  133  128
+[4,]  147  142  137  132  127
+[5,]  146  141  136  131  126
+```
+## Challenge 4
+```{r}
+#Anthropoidea
+Platyrrhini <- c("Cebidae", "Atelidae", "Pitheciidae")
+Catarrhini <- c("Cercopithecidae", "Hylobatidae", "Hominidae")
+Anthropoidea <- list(Platyrrhini, Catarrhini)
+names(Anthropoidea) <- list("Platyrrhini", "Catarrhini")
+
+#Tarsioidea
+Tarsioidea <- c("Tarsiidae")
+
+#Haplorhini
+Haplorhini <- list(Anthropoidea, Tarsioidea)
+names(Haplorhini) <- list("Anthropoidea", "Tarsioidea")
+
+#Strepsirhini
+Lorisoidea <- c("Lorisidae", "Galagidae")
+Lemuroidea <- c("Cheirogalediae", "Lepilemuridae", "Indriidae", "Lemuridae", "Daubentoniidae")
+Strepsirhini <- list(Lorisoidea, Lemuroidea)
+names(Strepsirhini) <- list("Lorisoidea", "Lemuroidea")
+
+#Primates
+Primates <- list(Haplorhini, Strepsirhini)
+names(Primates) <- list("Haplorhini", "Strepsirhini")
+Primates
+```
+## Challenge 5
+```{r}
+m3 <- matrix(data = c(3,0,1,23,1,2,33,1,1,42,0,1,41,0,2), nrow = 5, ncol = 3, byrow = TRUE)
+#Coerce matrix to data frame
+df <- data.frame(m3)
+#Coerce second column to be logical-valued
+df$X2 <- as.logical(df$X2)
+#Coerce third column to be factor-valued
+df$X3 <- as.factor(df$X3)
+#Result
+str(df)
+```
